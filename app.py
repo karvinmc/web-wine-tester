@@ -4,6 +4,7 @@
 # pip install pandas
 # pip install scikit-learn
 # pip install streamlit
+# test
 
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
