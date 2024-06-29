@@ -30,3 +30,49 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const targetField = document.getElementById("target");
+    const formFields = [
+        "alcohol",
+        "malicAcid",
+        "ash",
+        "ashAlcanity",
+        "magnesium",
+        "totalPhenols",
+        "flava",
+        "nonFlava",
+        "pro",
+        "color",
+        "hue",
+        "od280",
+        "proline",
+    ];
+
+    function updateFormFields() {
+        const selectedTarget = targetField.value;
+
+        if (!selectedTarget) {
+            formFields.forEach((field) => {
+                const fieldElement = document.getElementById(`${field}-field`);
+                fieldElement.classList.add("d-none");
+            });
+        } else {
+            formFields.forEach((field) => {
+                const fieldElement = document.getElementById(`${field}-field`);
+                if (selectedTarget === field) {
+                    fieldElement.classList.add("d-none");
+                } else {
+                    fieldElement.classList.remove("d-none");
+                }
+            });
+        }
+    }
+
+    // Hide all fields initially
+    formFields.forEach((field) => {
+        const fieldElement = document.getElementById(`${field}-field`);
+        fieldElement.classList.add("d-none");
+    });
+
+    targetField.addEventListener("change", updateFormFields);
+});
