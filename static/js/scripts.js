@@ -51,28 +51,18 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateFormFields() {
         const selectedTarget = targetField.value;
 
-        if (!selectedTarget) {
-            formFields.forEach((field) => {
-                const fieldElement = document.getElementById(`${field}-field`);
+        formFields.forEach((field) => {
+            const fieldElement = document.getElementById(`${field}-field`);
+            if (!selectedTarget || selectedTarget === field) {
                 fieldElement.classList.add("d-none");
-            });
-        } else {
-            formFields.forEach((field) => {
-                const fieldElement = document.getElementById(`${field}-field`);
-                if (selectedTarget === field) {
-                    fieldElement.classList.add("d-none");
-                } else {
-                    fieldElement.classList.remove("d-none");
-                }
-            });
-        }
+            } else {
+                fieldElement.classList.remove("d-none");
+            }
+        });
     }
 
-    // Hide all fields initially
-    formFields.forEach((field) => {
-        const fieldElement = document.getElementById(`${field}-field`);
-        fieldElement.classList.add("d-none");
-    });
+    // Hide all fields initially (except target)
+    updateFormFields();
 
     targetField.addEventListener("change", updateFormFields);
 });
