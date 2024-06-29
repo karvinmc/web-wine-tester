@@ -61,9 +61,9 @@ def index():
 def about():
     return render_template("about.html")
 
-@app.route("/post")
-def post():
-    return render_template("post.html")
+@app.route("/blog1")
+def blog1():
+    return render_template("blog1.html")
 
 @app.route("/contact")
 def contact():
