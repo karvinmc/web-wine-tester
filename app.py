@@ -90,6 +90,19 @@ def tester():
             "proline": form.proline.data
         }
         target = form.target.data
+        form.alcohol.data = ""
+        form.malicAcid.data = ""
+        form.ash.data = ""
+        form.ashAlcanity.data = ""
+        form.magnesium.data = ""
+        form.totalPhenols.data = ""
+        form.flava.data = ""
+        form.nonFlava.data = ""
+        form.color.data = ""
+        form.hue.data = ""
+        form.od280.data = ""
+        form.proline.data = ""
+        form.target.data = ""
 
         # Convert form data to DataFrame
         df = pd.DataFrame([data])
