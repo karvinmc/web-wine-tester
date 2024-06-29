@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 
@@ -17,6 +20,10 @@ def post():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/tester')
+def tester():
+    return render_template('tester.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
