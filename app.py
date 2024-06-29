@@ -69,6 +69,10 @@ def blog1():
 def blog2():
     return render_template("blog2.html")
 
+@app.route("/blog3")
+def blog3():
+    return render_template("blog3.html")
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
