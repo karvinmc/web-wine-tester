@@ -7,16 +7,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, r2_score
+import joblib
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret123"
-
 
 # Custom validator to ensure a selection is made
 def validate_selection(form, field):
     if field.data == "":
         raise ValidationError("Please select a target.")
-
 
 # Form Class
 class WineTest(FlaskForm):
@@ -55,21 +54,25 @@ class WineTest(FlaskForm):
     )
     submit = SubmitField("Submit")
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
+@app.route("/blog1")
+def blog1():
+    return render_template("blog1.html")
 
-@app.route("/post")
-def post():
-    return render_template("post.html")
+@app.route("/blog2")
+def blog2():
+    return render_template("blog2.html")
 
+@app.route("/blog3")
+def blog3():
+    return render_template("blog3.html")
 
 @app.route("/contact")
 def contact():
