@@ -47,6 +47,7 @@ class WineTest(FlaskForm):
             ("alcohol", "Alcohol"),
             ("malicAcid", "Malic Acid"),
             ("ash", "Ash"),
+            ("ashAlcanity", "Ash Alcanity"),
             ("magnesium", "Magnesium"),
             ("totalPhenols", "Total Phenols"),
             ("flava", "Flavanoids"),
@@ -116,6 +117,19 @@ def tester():
         od280 = form.od280.data
         proline = form.proline.data
         target = form.target.data
+        form.alcohol.data = ""
+        form.malicAcid.data = ""
+        form.ash.data = ""
+        form.ashAlcanity.data = ""
+        form.magnesium.data = ""
+        form.totalPhenols.data = ""
+        form.flava.data = ""
+        form.nonFlava.data = ""
+        form.color.data = ""
+        form.hue.data = ""
+        form.od280.data = ""
+        form.proline.data = ""
+        form.target.data = ""
 
     return render_template(
         "tester.html",
