@@ -1,44 +1,112 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+    .masthead {
+        position: relative;
+        background-color: #343a40;
+        color: white;
+        background-size: cover;
+        background-position: center;
+        padding: 8rem 0;
+    }
+    .masthead h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        animation: fadeInUp 1s ease-out;
+    }
+    .masthead .subheading {
+        font-size: 1.5rem;
+        font-weight: 300;
+        animation: fadeInUp 1s ease-out;
+        animation-delay: 0.3s;
+    }
+    .content-section {
+        padding: 4rem 0;
+    }
+    .content-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 1s ease-out;
+    }
+    .content-section p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #666;
+        animation: fadeInUp 1s ease-out;
+        animation-delay: 0.3s;
+    }
+    .feature-box {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease-out;
+    }
+    .feature-box h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #343a40;
+    }
+    .feature-box p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
 <!-- Page Header-->
-<header
-    class="masthead"
-    style="background-image: url('static/img/about-bg.jpg')"
->
+<header class="masthead" style="background-image: url('static/img/home wine.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="page-heading">
-                    <h1>About Me</h1>
-                    <span class="subheading">This is what I do.</span>
+                <div class="page-heading text-center">
+                    <h1 class="mb-4">About Us</h1>
+                    <span class="subheading mb-5">Your Personal Guide to Wine Excellence</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 <!-- Main Content-->
-<main class="mb-4">
+<main class="content-section">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Saepe nostrum ullam eveniet pariatur voluptates odit, fuga
-                    atque ea nobis sit soluta odio, adipisci quas excepturi
-                    maxime quae totam ducimus consectetur?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Eius praesentium recusandae illo eaque architecto error,
-                    repellendus iusto reprehenderit, doloribus, minus sunt.
-                    Numquam at quae voluptatum in officia voluptas voluptatibus,
-                    minus!
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aut consequuntur magnam, excepturi aliquid ex itaque esse
-                    est vero natus quae optio aperiam soluta voluptatibus
-                    corporis atque iste neque sit tempora!
-                </p>
+                <h2 class="text-center mb-5">Welcome to WineBlog</h2>
+                <div class="feature-box">
+                    <h3>What We Offer</h3>
+                    <p>
+                        WineBlog is your premier source of information about everything related to wine. We provide in-depth articles on the history, culture, and uniqueness of each type of wine.
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <h3>Wine Quality Prediction Tool</h3>
+                    <p>
+                        Use our advanced prediction tool to uncover the taste, aroma, and profiles of wine more deeply. Our machine learning technology will help you discover the best quality in every sip of wine.
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <h3>Wine Enthusiast Community</h3>
+                    <p>
+                        Join our expansive wine community and enjoy various discussions, tips, and advice from experts and fellow wine enthusiasts around the world.
+                    </p>
+                </div>
             </div>
         </div>
     </div>

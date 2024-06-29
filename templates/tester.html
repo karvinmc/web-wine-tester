@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+{% extends 'base.html' %} 
+{% block head %}
+{% endblock %} 
+{% block body %}
 <!-- Page header  -->
 <header class="masthead">
     <div class="container position-relative px-4 px-lg-5">
@@ -17,62 +20,62 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7 bg-light rounded-3">
-                <form method="POST" action="{{ url_for('tester') }}">
+                <form method="POST">
                     {{ form.hidden_tag() }}
 
                     <div class="form-group mt-3 mb-3">
                         {{ form.target.label(class="form-label") }}
                         {{ form.target(class="form-select", id="target") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="alcohol-field">
+                    <div class="form-group mb-3" id="alcohol-field">
                         {{ form.alcohol.label(class="form-label") }}
                         {{ form.alcohol(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="malicAcid-field">
+                    <div class="form-group mb-3" id="malicAcid-field">
                         {{ form.malicAcid.label(class="form-label") }}
                         {{ form.malicAcid(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="ash-field">
+                    <div class="form-group mb-3" id="ash-field">
                         {{ form.ash.label(class="form-label") }}
                         {{ form.ash(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="ashAlcanity-field">
+                    <div class="form-group mb-3" id="ashAlcanity-field">
                         {{ form.ashAlcanity.label(class="form-label") }}
                         {{ form.ashAlcanity(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="magnesium-field">
+                    <div class="form-group mb-3" id="magnesium-field">
                         {{ form.magnesium.label(class="form-label") }}
                         {{ form.magnesium(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="totalPhenols-field">
+                    <div class="form-group mb-3" id="totalPhenols-field">
                         {{ form.totalPhenols.label(class="form-label") }}
                         {{ form.totalPhenols(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="flava-field">
+                    <div class="form-group mb-3" id="flava-field">
                         {{ form.flava.label(class="form-label") }}
                         {{ form.flava(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="nonFlava-field">
+                    <div class="form-group mb-3" id="nonFlava-field">
                         {{ form.nonFlava.label(class="form-label") }}
                         {{ form.nonFlava(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="pro-field">
+                    <div class="form-group mb-3" id="pro-field">
                         {{ form.pro.label(class="form-label") }}
                         {{ form.pro(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="color-field">
+                    <div class="form-group mb-3" id="color-field">
                         {{ form.color.label(class="form-label") }}
                         {{ form.color(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="hue-field">
+                    <div class="form-group mb-3" id="hue-field">
                         {{ form.hue.label(class="form-label") }}
                         {{ form.hue(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="od280-field">
+                    <div class="form-group mb-3" id="od280-field">
                         {{ form.od280.label(class="form-label") }}
                         {{ form.od280(class="form-control", type="number") }}
                     </div>
-                    <div class="form-group mb-3 d-none" id="proline-field">
+                    <div class="form-group mb-3" id="proline-field">
                         {{ form.proline.label(class="form-label") }}
                         {{ form.proline(class="form-control", type="number") }}
                     </div>
@@ -84,4 +87,15 @@
         </div>
     </div>
 </section>
+
+<!-- Debug -->
+<!-- <section class="debug">
+    <div class="mt-5">
+        <p>Target: {{ target }}</p>
+        <p>Alcohol: {{ alcohol }}</p>
+        <p>Malic Acid: {{ malicAcid }}</p>
+        <p>Ash: {{ ash }}</p>
+        <p>Magnesium: {{ magnesium }}</p>
+    </div>
+</section> -->
 {% endblock %}
