@@ -4,7 +4,6 @@
 # pip install pandas
 # pip install scikit-learn
 # pip install streamlit
-# test
 
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
@@ -15,7 +14,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
-import streamlit as st
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret123"
@@ -137,6 +135,7 @@ def tester():
         proline=proline,
         target=target,
     )
+
 
 # Machine learning using regression
 # TODO: Pindah kode dari github kesini
