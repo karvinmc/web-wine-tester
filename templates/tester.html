@@ -7,7 +7,8 @@
                 <div class="page-heading">
                     <h1>Wine Tester</h1>
                     <span class="subheading"
-                        >Lorem ipsum dolor sit amet consectetur.</span
+                        >Find out the quality of your wine with the help of
+                        advanced machine learning analysis</span
                     >
                 </div>
             </div>
@@ -15,5 +16,91 @@
     </div>
 </header>
 <!-- Form -->
-<!-- TODO: bikin form nd sini -->
+<!-- TODO: setelah user input target, atribut lain akan muncul tanpa 
+ atribut yg menjadi target -->
+<section class="wine-form mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7 bg-light rounded-3">
+                <form method="POST" action="{{ url_for('tester') }}">
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-group mt-3 mb-3">
+                        {{ form.target.label(class="form-label") }}
+                        {{ form.target(class="form-select") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.alcohol.label(class="form-label") }}
+                        {{ form.alcohol(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.malicAcid.label(class="form-label") }}
+                        {{ form.malicAcid(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.ash.label(class="form-label") }}
+                        {{ form.ash(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.ashAlcanity.label(class="form-label") }}
+                        {{ form.ashAlcanity(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.magnesium.label(class="form-label") }}
+                        {{ form.magnesium(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.totalPhenols.label(class="form-label") }}
+                        {{ form.totalPhenols(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.flava.label(class="form-label") }}
+                        {{ form.flava(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.nonFlava.label(class="form-label") }}
+                        {{ form.nonFlava(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.pro.label(class="form-label") }}
+                        {{ form.pro(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.color.label(class="form-label") }}
+                        {{ form.color(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.hue.label(class="form-label") }}
+                        {{ form.hue(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.od280.label(class="form-label") }}
+                        {{ form.od280(class="form-control", type="number") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.proline.label(class="form-label") }}
+                        {{ form.proline(class="form-control", type="number") }}
+                    </div>
+                    <div class="mb-3 text-center">
+                        {{ form.submit(class="btn btn-primary btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Debug -->
+<!-- {% if alcohol %}
+<section class="debug mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h3>Debug:</h3>
+                <p>Alcohol: {{ alcohol }}</p>
+                <p>Malic Acid: {{ malicAcid }}</p>
+            </div>
+        </div>
+    </div>
+</section> -->
+{% endif %}
 {% endblock %}
