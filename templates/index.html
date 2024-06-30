@@ -96,81 +96,66 @@
     </div>
 </section>
 <!-- Main Content -->
-<section class="main-section">
-    <div class="container px-4 px-lg-5">
-        <div class="text-center">
-            <h1>Featured Blog</h1>
-        </div>
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <img src="static/img/whatiswine2.png" alt="Post Image">
-                    <div class="post-content">
-                        <a href="{{ url_for('blog1') }}">
-                            <h2 class="post-title">What is Wine Exactly?</h2>
-                        </a>
-                        <p class="post-meta">Written by Madeline Puckette</p>
-                    </div>
-                </div>
-                <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <img src="static/img/redvswhite.png" alt="Post Image">
-                    <div class="post-content">
-                        <a href="{{ url_for('blog2') }}">
-                            <h2 class="post-title">
-                                Red Wine vs White Wine: The Real Differences
-                            </h2>
-                        </a>
-                        <p class="post-meta">Written by Madeline Puckette</p>
-                    </div>
-                </div>
-                <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <img src="static/img/wineandsteak.png" alt="Post Image">
-                    <div class="post-content">
-                        <a href="{{ url_for('blog3') }}">
-                            <h2 class="post-title">
-                                The Handy Guide to Wine and Steak Pairing
-                            </h2>
-                        </a>
-                        <p class="post-meta">Written by Crom Larson</p>
-                    </div>
-                </div>
-                <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <img src="static/img/failureisnotanoption.png" alt="Post Image">
-                    <div class="post-content">
-                        <a href="{{ url_for('blog1') }}">
-                            <h2 class="post-title">Failure is not an option</h2>
-                            <h3 class="post-subtitle">
-                                Many say exploration is part of our destiny, but
-                                it’s actually our duty to future generations.
-                            </h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">WineBlog</a>
-                            on July 8, 2023
-                        </p>
-                    </div>
-                </div>
-                <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Pager-->
-                <div class="d-flex justify-content-end mb-4">
-                    <a class="btn btn-primary text-uppercase" href="#!"
-                        >Older Posts →</a
-                    >
-                </div>
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="{{ url_for('blog1') }}">
+                    <h2 class="post-title">
+                        What is Wine Exactly?
+                    </h2>
+                </a>
+                <p class="post-meta">
+                    Written by Madeline Puckette
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="{{ url_for('blog2') }}"
+                    ><h2 class="post-title">
+                        Red Wine vs White Wine: The Real Differences
+                    </h2></a
+                >
+                <p class="post-meta">
+                    Written by Madeline Puckette
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="{{ url_for('blog3') }}">
+                    <h2 class="post-title">
+                        The Handy Guide to Wine and Steak Pairing
+                    </h2>
+                </a>
+                <p class="post-meta">
+                    Written by Crom Larson
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="{{ url_for('blog4') }}">
+                    <h2 class="post-title">Some Nifty Science to Help You Identify Wine Aromas</h2>
+                </a>
+                <p class="post-meta">
+                    Written by Andrea Buffa
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4">
+                <a class="btn btn-primary text-uppercase" href="#!"
+                    >Older Posts →</a
+                >
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}
