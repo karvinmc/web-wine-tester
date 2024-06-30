@@ -1,6 +1,9 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block head %}
-{% endblock %} 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}
 {% block body %}
 <!-- Page header  -->
 <header class="masthead">
@@ -20,7 +23,7 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7 bg-light rounded-3">
-                <form method="POST">
+                <form id="wineForm" method="POST">
                     {{ form.hidden_tag() }}
 
                     <div class="form-group mt-3 mb-3">
@@ -80,7 +83,7 @@
                         {{ form.proline(class="form-control", type="number") }}
                     </div>
                     <div class="mb-3 text-center">
-                        {{ form.submit(class="btn btn-primary btn-lg") }}
+                        {{ form.submit(class="btn btn-primary btn-lg", id="submitBtn") }}
                     </div>
                 </form>
             </div>
@@ -88,14 +91,50 @@
     </div>
 </section>
 
-<!-- Debug -->
-<!-- <section class="debug">
-    <div class="mt-5">
-        <p>Target: {{ target }}</p>
-        <p>Alcohol: {{ alcohol }}</p>
-        <p>Malic Acid: {{ malicAcid }}</p>
-        <p>Ash: {{ ash }}</p>
-        <p>Magnesium: {{ magnesium }}</p>
-    </div>
-</section> -->
+<script>
+$(document).ready(function() {
+    $('#submitBtn').prop('disabled', true);
+
+    $('#target').change(function() {
+        if ($(this).val() !== "") {
+            $('#submitBtn').prop('disabled', false).show();
+        } else {
+            $('#submitBtn').prop('disabled', true).hide();
+        }
+    });
+
+    $('#wineForm').submit(function(event) {
+        let valid = true;
+        const target = $('#target').val();
+        const targetFieldId = target.replace('_', '');
+
+        $('#wineForm .form-control').each(function() {
+            if ($(this).val() === "" && $(this).closest('.form-group').attr('id') !== targetFieldId) {
+                valid = false;
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
+            }
+        });
+
+        if (!valid) {
+            event.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill out all the fields before submitting the form, except for the target attribute.',
+            });
+        }
+    });
+
+    $('#target').change(function() {
+        const target = $(this).val();
+        $('.form-group').show();
+
+        if (target !== "") {
+            $(`#${target}`).hide();
+        }
+    }).change();
+});
+</script>
 {% endblock %}

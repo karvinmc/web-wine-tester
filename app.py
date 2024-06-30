@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, DecimalField, SelectField
 from wtforms.validators import DataRequired, ValidationError, Optional
@@ -11,12 +11,10 @@ from sklearn.metrics import mean_squared_error, r2_score
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret123"
 
-
 # Custom validator to ensure a selection is made
 def validate_selection(form, field):
     if field.data == "":
         raise ValidationError("Please select a target.")
-
 
 # Form Class
 class WineTest(FlaskForm):
@@ -55,39 +53,29 @@ class WineTest(FlaskForm):
     )
     submit = SubmitField("Submit")
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-
 @app.route("/blog1")
 def blog1():
     return render_template("blog1.html")
-
 
 @app.route("/blog2")
 def blog2():
     return render_template("blog2.html")
 
-
 @app.route("/blog3")
 def blog3():
     return render_template("blog3.html")
 
-@app.route("/blog4")
-def blog4():
-    return render_template("blog4.html")
-
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
-
 
 @app.route("/result")
 def result():
@@ -128,12 +116,10 @@ def result():
         r2=r2,
     )
 
-
 @app.route("/tester", methods=["GET", "POST"])
 def tester():
     form = WineTest()
     if form.validate_on_submit():
-
         target = form.target.data
         alcohol = form.alcohol.data if target != "Alcohol" else "Target"
         malicAcid = form.malicAcid.data if target != "Malic_Acid" else "Target"
@@ -149,22 +135,35 @@ def tester():
         od280 = form.od280.data if target != "OD280" else "Target"
         proline = form.proline.data if target != "Proline" else "Target"
 
-        # Extracting form data
-        data = {
-            "Alcohol": alcohol,
-            "Malic_Acid": malicAcid,
-            "Ash": ash,
-            "Ash_Alcanity": ashAlcanity,
-            "Magnesium": magnesium,
-            "Total_Phenols": totalPhenols,
-            "Flavanoids": flava,
-            "Nonflavanoid_Phenols": nonFlava,
-            "Proanthocyanins": pro,
-            "Color_Intensity": color,
-            "Hue": hue,
-            "OD280": od280,
-            "Proline": proline,
+        required_fields = {
+            "Alcohol": form.alcohol,
+            "Malic_Acid": form.malicAcid,
+            "Ash": form.ash,
+            "Ash_Alcanity": form.ashAlcanity,
+            "Magnesium": form.magnesium,
+            "Total_Phenols": form.totalPhenols,
+            "Flavanoids": form.flava,
+            "Nonflavanoid_Phenols": form.nonFlava,
+            "Proanthocyanins": form.pro,
+            "Color_Intensity": form.color,
+            "Hue": form.hue,
+            "OD280": form.od280,
+            "Proline": form.proline
         }
+
+        # Ensure all fields except target are filled
+        all_filled = True
+        for key, field in required_fields.items():
+            if key != target and not field.data:
+                all_filled = False
+                flash(f"{key.replace('_', ' ')} is required except target attribute", "danger")
+        
+        if not all_filled:
+            return render_template("tester.html", form=form)
+
+        # Extracting form data
+        data = {k: v.data for k, v in required_fields.items()}
+        data[target] = "Target"
 
         # Convert form data to DataFrame
         df = pd.DataFrame([data])
@@ -176,9 +175,7 @@ def tester():
         # Prepare the data
         X = dataset.drop(columns=[target])
         y = dataset[target]
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2, random_state=42
-        )
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         # Standardize the data
         scaler = StandardScaler()
@@ -220,7 +217,6 @@ def tester():
             )
         )
     return render_template("tester.html", form=form)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
