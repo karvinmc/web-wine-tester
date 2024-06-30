@@ -111,4 +111,22 @@
         </div>
     </div>
 </main>
+
+<script>
+    // Adding scroll animation
+    document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        });
+
+        document.querySelectorAll('.animated').forEach(item => {
+            observer.observe(item);
+        });
+    });
+</script>
+
 {% endblock %}
