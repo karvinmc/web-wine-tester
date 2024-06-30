@@ -6,7 +6,7 @@
 {% endblock %}
 {% block body %}
 <!-- Page header  -->
-<header class="masthead">
+<header class="masthead" style="background-image: url('static/img/winetester.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -106,7 +106,7 @@ $(document).ready(function() {
     $('#wineForm').submit(function(event) {
         let valid = true;
         const target = $('#target').val();
-        const targetFieldId = target.replace('_', '');
+        const targetFieldId = target.replace('_', '_');
 
         $('#wineForm .form-control').each(function() {
             if ($(this).val() === "" && $(this).closest('.form-group').attr('id') !== targetFieldId) {

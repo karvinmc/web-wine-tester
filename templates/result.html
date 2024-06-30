@@ -1,5 +1,74 @@
 {% extends 'base.html' %} 
-{% block head %} 
+{% block head %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+    .container {
+        font-family: 'Raleway', sans-serif;
+        color: #333;
+    }
+    .modal-dialog {
+        max-width: 70vw; /* Adjust modal width to fit screen */
+    }
+    .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        background-color: #fff;
+        overflow: hidden;
+        animation: fadeIn 0.5s ease;
+    }
+    .modal-header {
+        background-color: #6c757d;
+        color: #fff;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .modal-title {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    .modal-body p {
+        font-size: 1.2em;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+    .table thead {
+        background-color: #e9ecef;
+    }
+    .table th {
+        font-weight: bold;
+        text-align: center;
+        background-color: #343a40; /* Darker background for headers */
+        color: #fff; /* White text color */
+    }
+    .table td {
+        text-align: center;
+        background-color: #f1f1f1; /* Light gray background for cells */
+    }
+    .btn-primary {
+        background-color: #343a40; /* Darker button color */
+        border: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+    .btn-primary:hover {
+        background-color: #23272b; /* Slightly darker on hover */
+        transform: translateY(-2px);
+    }
+    .modal-footer {
+        background-color: #f1f1f1;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .modal-footer .btn {
+        font-size: 1em;
+        padding: 0.5em 2em;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
 {% endblock %} 
 {% block body %}
 <div class="container mt-5">
@@ -13,65 +82,65 @@
                     <p>
                         <strong>Predicted Value:</strong> {{ user_prediction }}
                     </p>
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Attribute</th>
-                                <th scope="col">Input Value</th>
+                                <th scope="col" style="background-color: #343a40; color: #fff;">Attribute</th>
+                                <th scope="col" style="background-color: #343a40; color: #fff;">Input Value</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Alcohol</td>
-                                <td>{{ alcohol }}</td>
+                                <td style="background-color: #f1f1f1;">Alcohol</td>
+                                <td style="background-color: #f1f1f1;">{{ alcohol }}</td>
                             </tr>
                             <tr>
-                                <td>Malic Acid</td>
-                                <td>{{ malicAcid }}</td>
+                                <td style="background-color: #f1f1f1;">Malic Acid</td>
+                                <td style="background-color: #f1f1f1;">{{ malicAcid }}</td>
                             </tr>
                             <tr>
-                                <td>Ash</td>
-                                <td>{{ ash }}</td>
+                                <td style="background-color: #f1f1f1;">Ash</td>
+                                <td style="background-color: #f1f1f1;">{{ ash }}</td>
                             </tr>
                             <tr>
-                                <td>Ash Alcanity</td>
-                                <td>{{ ashAlcanity }}</td>
+                                <td style="background-color: #f1f1f1;">Ash Alcanity</td>
+                                <td style="background-color: #f1f1f1;">{{ ashAlcanity }}</td>
                             </tr>
                             <tr>
-                                <td>Magnesium</td>
-                                <td>{{ magnesium }}</td>
+                                <td style="background-color: #f1f1f1;">Magnesium</td>
+                                <td style="background-color: #f1f1f1;">{{ magnesium }}</td>
                             </tr>
                             <tr>
-                                <td>Total Phenols</td>
-                                <td>{{ totalPhenols }}</td>
+                                <td style="background-color: #f1f1f1;">Total Phenols</td>
+                                <td style="background-color: #f1f1f1;">{{ totalPhenols }}</td>
                             </tr>
                             <tr>
-                                <td>Flavanoids</td>
-                                <td>{{ flava }}</td>
+                                <td style="background-color: #f1f1f1;">Flavanoids</td>
+                                <td style="background-color: #f1f1f1;">{{ flava }}</td>
                             </tr>
                             <tr>
-                                <td>Nonflavanoid Phenols</td>
-                                <td>{{ nonFlava }}</td>
+                                <td style="background-color: #f1f1f1;">Nonflavanoid Phenols</td>
+                                <td style="background-color: #f1f1f1;">{{ nonFlava }}</td>
                             </tr>
                             <tr>
-                                <td>Proanthocyanins</td>
-                                <td>{{ pro }}</td>
+                                <td style="background-color: #f1f1f1;">Proanthocyanins</td>
+                                <td style="background-color: #f1f1f1;">{{ pro }}</td>
                             </tr>
                             <tr>
-                                <td>Color Intensity</td>
-                                <td>{{ color }}</td>
+                                <td style="background-color: #f1f1f1;">Color Intensity</td>
+                                <td style="background-color: #f1f1f1;">{{ color }}</td>
                             </tr>
                             <tr>
-                                <td>Hue</td>
-                                <td>{{ hue }}</td>
+                                <td style="background-color: #f1f1f1;">Hue</td>
+                                <td style="background-color: #f1f1f1;">{{ hue }}</td>
                             </tr>
                             <tr>
-                                <td>OD280</td>
-                                <td>{{ od280 }}</td>
+                                <td style="background-color: #f1f1f1;">OD280</td>
+                                <td style="background-color: #f1f1f1;">{{ od280 }}</td>
                             </tr>
                             <tr>
-                                <td>Proline</td>
-                                <td>{{ proline }}</td>
+                                <td style="background-color: #f1f1f1;">Proline</td>
+                                <td style="background-color: #f1f1f1;">{{ proline }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -79,9 +148,7 @@
                     <p><strong>R-squared (R²):</strong> {{ r2 }}</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{ url_for('tester') }}" class="btn btn-primary"
-                        >Go Back</a
-                    >
+                    <a href="{{ url_for('tester') }}" class="btn btn-primary">Go Back</a>
                 </div>
             </div>
         </div>
