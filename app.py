@@ -1,37 +1,38 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, DecimalField, SelectField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Optional
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, r2_score
-import joblib
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret123"
+
 
 # Custom validator to ensure a selection is made
 def validate_selection(form, field):
     if field.data == "":
         raise ValidationError("Please select a target.")
 
+
 # Form Class
 class WineTest(FlaskForm):
-    alcohol = DecimalField("Alcohol")
-    malicAcid = DecimalField("Malic Acid")
-    ash = DecimalField("Ash")
-    ashAlcanity = DecimalField("Ash Alcanity")
-    magnesium = DecimalField("Magnesium")
-    totalPhenols = DecimalField("Total Phenols")
-    flava = DecimalField("Flavanoids")
-    nonFlava = DecimalField("Nonflavanoid Phenols")
-    pro = DecimalField("Proanthocyanins")
-    color = DecimalField("Color Intensity")
-    hue = DecimalField("Hue")
-    od280 = DecimalField("OD280")
-    proline = DecimalField("Proline")
+    alcohol = DecimalField("Alcohol", validators=[Optional()])
+    malicAcid = DecimalField("Malic Acid", validators=[Optional()])
+    ash = DecimalField("Ash", validators=[Optional()])
+    ashAlcanity = DecimalField("Ash Alcanity", validators=[Optional()])
+    magnesium = DecimalField("Magnesium", validators=[Optional()])
+    totalPhenols = DecimalField("Total Phenols", validators=[Optional()])
+    flava = DecimalField("Flavanoids", validators=[Optional()])
+    nonFlava = DecimalField("Nonflavanoid Phenols", validators=[Optional()])
+    pro = DecimalField("Proanthocyanins", validators=[Optional()])
+    color = DecimalField("Color Intensity", validators=[Optional()])
+    hue = DecimalField("Hue", validators=[Optional()])
+    od280 = DecimalField("OD280", validators=[Optional()])
+    proline = DecimalField("Proline", validators=[Optional()])
     target = SelectField(
         "Target Attribute",
         choices=[
@@ -54,25 +55,31 @@ class WineTest(FlaskForm):
     )
     submit = SubmitField("Submit")
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
+
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
+
 @app.route("/blog1")
 def blog1():
     return render_template("blog1.html")
+
 
 @app.route("/blog2")
 def blog2():
     return render_template("blog2.html")
 
+
 @app.route("/blog3")
 def blog3():
     return render_template("blog3.html")
+
 
 @app.route("/contact")
 def contact():
@@ -118,35 +125,51 @@ def result():
         r2=r2,
     )
 
+
 @app.route("/tester", methods=["GET", "POST"])
 def tester():
     form = WineTest()
     if form.validate_on_submit():
 
+        target = form.target.data
+        alcohol = form.alcohol.data if target != "Alcohol" else "Target"
+        malicAcid = form.malicAcid.data if target != "Malic_Acid" else "Target"
+        ash = form.ash.data if target != "Ash" else "target"
+        ashAlcanity = form.ashAlcanity.data if target != "Ash_Alcanity" else "Target"
+        magnesium = form.magnesium.data if target != "Magnesium" else "Target"
+        totalPhenols = form.totalPhenols.data if target != "Total_Phenols" else "Target"
+        flava = form.flava.data if target != "Flavanoids" else "Target"
+        nonFlava = form.nonFlava.data if target != "Nonflavanoid_Phenols" else "Target"
+        pro = form.pro.data if target != "Proanthocyanins" else "Target"
+        color = form.color.data if target != "Color_Intensity" else "Target"
+        hue = form.hue.data if target != "Hue" else "Target"
+        od280 = form.od280.data if target != "OD280" else "Target"
+        proline = form.proline.data if target != "Proline" else "Target"
+
         # Extracting form data
         data = {
-            # "Alcohol": form.alcohol.data,
-            "Malic_Acid": form.malicAcid.data,
-            "Ash": form.ash.data,
-            "Ash_Alcanity": form.ashAlcanity.data,
-            "Magnesium": form.magnesium.data,
-            "Total_Phenols": form.totalPhenols.data,
-            "Flavanoids": form.flava.data,
-            "Nonflavanoid_Phenols": form.nonFlava.data,
-            "Proanthocyanins": form.pro.data,
-            "Color_Intensity": form.color.data,
-            "Hue": form.hue.data,
-            "OD280": form.od280.data,
-            "Proline": form.proline.data,
+            "Alcohol": alcohol,
+            "Malic_Acid": malicAcid,
+            "Ash": ash,
+            "Ash_Alcanity": ashAlcanity,
+            "Magnesium": magnesium,
+            "Total_Phenols": totalPhenols,
+            "Flavanoids": flava,
+            "Nonflavanoid_Phenols": nonFlava,
+            "Proanthocyanins": pro,
+            "Color_Intensity": color,
+            "Hue": hue,
+            "OD280": od280,
+            "Proline": proline,
         }
-        target = form.target.data
 
         # Convert form data to DataFrame
         df = pd.DataFrame([data])
+        df = df.drop(columns=[target])
 
         # Load dataset
         dataset = pd.read_csv("data/wine-clustering.csv")
-        
+
         # Prepare the data
         X = dataset.drop(columns=[target])
         y = dataset[target]
@@ -175,19 +198,19 @@ def tester():
         return redirect(
             url_for(
                 "result",
-                # alcohol=form.alcohol.data,
-                malicAcid=form.malicAcid.data,
-                ash=form.ash.data,
-                ashAlcanity=form.ashAlcanity.data,
-                magnesium=form.magnesium.data,
-                totalPhenols=form.totalPhenols.data,
-                flava=form.flava.data,
-                nonFlava=form.nonFlava.data,
-                pro=form.pro.data,
-                color=form.color.data,
-                hue=form.hue.data,
-                od280=form.od280.data,
-                proline=form.proline.data,
+                alcohol=alcohol,
+                malicAcid=malicAcid,
+                ash=ash,
+                ashAlcanity=ashAlcanity,
+                magnesium=magnesium,
+                totalPhenols=totalPhenols,
+                flava=flava,
+                nonFlava=nonFlava,
+                pro=pro,
+                color=color,
+                hue=hue,
+                od280=od280,
+                proline=proline,
                 user_prediction=user_prediction,
                 mse=mse,
                 r2=r2,

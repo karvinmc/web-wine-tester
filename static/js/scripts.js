@@ -33,26 +33,26 @@ window.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
     const targetField = document.getElementById("target");
     const formFields = [
-        "alcohol",
-        "malicAcid",
-        "ash",
-        "ashAlcanity",
-        "magnesium",
-        "totalPhenols",
-        "flava",
-        "nonFlava",
-        "pro",
-        "color",
-        "hue",
-        "od280",
-        "proline",
+        "Alcohol",
+        "Malic_Acid",
+        "Ash",
+        "Ash_Alcanity",
+        "Magnesium",
+        "Total_Phenols",
+        "Flavanoids",
+        "Nonflavanoid_Phenols",
+        "Proanthocyanins",
+        "Color_Intensity",
+        "Hue",
+        "OD280",
+        "Proline",
     ];
 
     function updateFormFields() {
         const selectedTarget = targetField.value;
 
         formFields.forEach((field) => {
-            const fieldElement = document.getElementById(`${field}-field`);
+            const fieldElement = document.getElementById(`${field}`);
             if (!selectedTarget || selectedTarget === field) {
                 fieldElement.classList.add("d-none");
             } else {
@@ -61,8 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Hide all fields initially (except target)
+    // Initial setup: hide all fields except the selected target
     updateFormFields();
 
+    // Event listener for target field change
     targetField.addEventListener("change", updateFormFields);
 });
