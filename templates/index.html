@@ -30,14 +30,14 @@
         margin-top: 80px;
     }
     .post-preview img {
-        max-height: 250px;
-        width: 250px; /* Adjust image width as needed */
+        height: 300px; /* Set height to maintain uniform size */
+        width: auto; /* Auto width to maintain aspect ratio */
         margin-right: 20px; /* Space between image and text */
         border-radius: 5px; /* Optional: Rounded corners */
+        transition: transform 0.3s ease; /* Added hover effect */
     }
-    .post-preview:hover {
-        transform: translateX(10px);
-        transition: transform 0.3s ease;
+    .post-preview:hover img {
+        transform: scale(1.1); /* Scale up on hover */
     }
     .post-preview .post-content {
         flex: 1; /* Take remaining space */
@@ -154,16 +154,30 @@
                 </div>
                 <!-- Divider-->
                 <hr class="my-4" data-aos="fade-right" data-aos-duration="800"/>
-                <!-- Pager-->
-                <div class="d-flex justify-content-end mb-4" data-aos="fade-left" data-aos-duration="800">
-                    <a class="btn btn-primary text-uppercase" href="#!"
-                        >Older Posts →</a
-                    >
-                </div>
+                <!-- Removed older posts button and added new wine type images -->
             </div>
         </div>
     </div>
 </section>
+
+<div class="py-5 tester-section mb-5 row justify-content-center">
+    <div class="col-md-4">
+        <div class="post-preview" data-aos="fade-left" data-aos-duration="800">
+            <img src="static/img/jenis1.jpg" alt="Wine Type 1" class="img-fluid">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="post-preview" data-aos="fade-left" data-aos-duration="800">
+            <img src="static/img/jenis2.jpeg" alt="Wine Type 2" class="img-fluid">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="post-preview" data-aos="fade-left" data-aos-duration="800">
+            <img src="static/img/jenis3.jpg" alt="Wine Type 3" class="img-fluid">
+        </div>
+    </div>
+</div>
+
 <!-- Tester menu -->
 <section class="py-5 tester-section mb-5">
     <div class="container px-lg-5">
