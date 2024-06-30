@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block head %}
+{% extends 'base.html' %} 
+{% block head %}
 <style>
     /* Page header styling */
     .masthead {
@@ -12,12 +13,12 @@
         text-align: center;
         padding: 200px 0;
         animation: fadeIn 2s ease-in-out;
+        font-family: "Lora", serif; /* Added font-family to match */
     }
     .masthead .page-heading {
         animation: slideDown 1.5s ease-out;
     }
     .masthead h1 {
-        font-family: "Lora", serif;
         font-size: 3rem;
         font-weight: 700;
     }
@@ -29,10 +30,12 @@
     /* Form styling */
     .form-floating {
         margin-bottom: 1rem;
+        font-family: "Lora", serif; /* Added font-family to match */
     }
     .form-control {
         border-radius: 0;
         border: 2px solid #5b2c6f;
+        font-family: "Lora", serif; /* Added font-family to match */
     }
     .form-control:focus {
         box-shadow: none;
@@ -41,6 +44,7 @@
     .btn-primary {
         background-color: #5b2c6f;
         border-color: #5b2c6f;
+        font-family: "Lora", serif; /* Added font-family to match */
     }
     .btn-primary:hover {
         background-color: #7d3c98;
@@ -117,6 +121,7 @@
         width: 50%;
         max-width: 600px;
         transition: transform 0.3s ease-in-out;
+        font-family: "Lora", serif; /* Added font-family to match */
     }
     .modal-content:hover {
         transform: scale(1.05);
@@ -134,7 +139,8 @@
         cursor: pointer;
     }
 </style>
-{% endblock %} {% block body %}
+{% endblock %} 
+{% block body %}
 <!-- Page Header -->
 <header
     class="masthead"
@@ -287,3 +293,4 @@
     };
 </script>
 {% endblock %}
+
