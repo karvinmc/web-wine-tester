@@ -4,16 +4,11 @@
     /* Page header styling */
     .masthead {
         position: relative;
-        height: 50vh;
-        min-height: 300px;
+        background-color: #343a40;
+        color: white;
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
-        color: white;
-        text-align: center;
-        padding: 200px 0;
-        animation: fadeIn 2s ease-in-out;
-        font-family: "Lora", serif; /* Added font-family to match */
+        padding: 8rem 0;
     }
     .masthead .page-heading {
         animation: slideDown 1.5s ease-out;
@@ -144,7 +139,7 @@
 <!-- Page Header -->
 <header
     class="masthead"
-    style="background-image: url('static/img/contact-bg.jpg')"
+    style="background-image: url('static/img/winecontact.jpg')"
 >
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -182,6 +177,7 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="my-5">
+            <h2 class="mb-4">Fill This Form</h2>
             <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                 <div class="form-floating">
                     <input
@@ -293,4 +289,3 @@
     };
 </script>
 {% endblock %}
-
