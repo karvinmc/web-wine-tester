@@ -1,4 +1,55 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+{% extends 'base.html' %} 
+{% block head %} 
+<style>
+    .masthead {
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .masthead .site-heading {
+        text-align: center;
+        color: #fff;
+    }
+    .main-section,
+    .tester-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px; /* increased padding for larger appearance */
+    }
+    .tester-menu .container,
+    .main-content .container {
+        max-width: 800px;
+    }
+    .post-preview {
+        display: flex;
+        align-items: center;
+        margin-top: 80px;
+    }
+    .post-preview img {
+        width: 150px; /* Adjust image width as needed */
+        margin-right: 20px; /* Space between image and text */
+        border-radius: 5px; /* Optional: Rounded corners */
+    }
+    .post-preview:hover {
+        transform: translateX(10px);
+        transition: transform 0.3s ease;
+    }
+    .post-preview .post-content {
+        flex: 1; /* Take remaining space */
+    }
+    .post-preview .post-title {
+        margin-bottom: 10px; /* Adjust spacing between title and meta */
+    }
+    .post-meta {
+        margin-bottom: 20px; /* Adjust spacing below meta */
+    }
+</style>
+{% endblock %} 
+{% block body %}
 <!-- Page Header-->
 <header
     class="masthead"
@@ -8,8 +59,14 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>WineBlog</h1>
-                    <span class="subheading"
+                    <h1 data-aos="zoom-in" data-aos-duration="1000">
+                        WineBlog
+                    </h1>
+                    <span
+                        class="subheading"
+                        data-aos="zoom-in"
+                        data-aos-duration="1000"
+                        data-aos-delay="1000"
                         >Your Personal Guide to Wine Excellence</span
                     >
                 </div>
@@ -18,89 +75,102 @@
     </div>
 </header>
 <!-- Tester menu -->
-<section class="py-5">
+<section class="py-5 tester-section">
     <div class="container px-lg-5">
-        <div class="p-4 p-lg-5 bg-light rounded-3 text-center shadow">
+        <div
+            class="p-4 p-lg-5 bg-light rounded-3 text-center shadow"
+            data-aos="zoom-in"
+        >
             <div class="m-4 m-lg-5">
                 <h1 class="display-5 fw-bold">Test Your Wine!</h1>
                 <p class="fs-4">
                     Discover the quality of your wine like never before with our
                     state-of-the-art testing tool. Using advanced machine
-                    learning, uncover the intricate flavors, aroma
-                    and profiles.
+                    learning, uncover the intricate flavors, aroma and profiles.
                 </p>
-                <a class="btn btn-primary btn-lg" href="{{ url_for('tester') }}">Wine Tester</a>
+                <a class="btn btn-primary btn-lg" href="{{ url_for('tester') }}"
+                    >Wine Tester</a
+                >
             </div>
         </div>
     </div>
 </section>
 <!-- Main Content -->
-<div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="{{ url_for('blog1') }}">
-                    <h2 class="post-title">
-                        What is Wine Exactly?
-                    </h2>
-                </a>
-                <p class="post-meta">
-                    Written by Madeline Puckette
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="{{ url_for('blog2') }}"
-                    ><h2 class="post-title">
-                        Red Wine vs White Wine: The Real Differences
-                    </h2></a
-                >
-                <p class="post-meta">
-                    Written by Madeline Puckette
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="{{ url_for('blog3') }}">
-                    <h2 class="post-title">
-                        The Handy Guide to Wine and Steak Pairing
-                    </h2>
-                </a>
-                <p class="post-meta">
-                    Written by Crom Larson
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="{{ url_for('blog1') }}">
-                    <h2 class="post-title">Failure is not an option</h2>
-                    <h3 class="post-subtitle">
-                        Many say exploration is part of our destiny, but it’s
-                        actually our duty to future generations.
-                    </h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">WineBlog</a>
-                    on July 8, 2023
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary text-uppercase" href="#!"
-                    >Older Posts →</a
-                >
+<section class="main-section">
+    <div class="container px-4 px-lg-5">
+        <div class="text-center">
+            <h1>Featured Blog</h1>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <img src="static/img/whatiswine2.png" alt="Post Image">
+                    <div class="post-content">
+                        <a href="{{ url_for('blog1') }}">
+                            <h2 class="post-title">What is Wine Exactly?</h2>
+                        </a>
+                        <p class="post-meta">Written by Madeline Puckette</p>
+                    </div>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <img src="static/img/redvswhite.png" alt="Post Image">
+                    <div class="post-content">
+                        <a href="{{ url_for('blog2') }}">
+                            <h2 class="post-title">
+                                Red Wine vs White Wine: The Real Differences
+                            </h2>
+                        </a>
+                        <p class="post-meta">Written by Madeline Puckette</p>
+                    </div>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <img src="static/img/wineandsteak.png" alt="Post Image">
+                    <div class="post-content">
+                        <a href="{{ url_for('blog3') }}">
+                            <h2 class="post-title">
+                                The Handy Guide to Wine and Steak Pairing
+                            </h2>
+                        </a>
+                        <p class="post-meta">Written by Crom Larson</p>
+                    </div>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <img src="static/img/failureisnotanoption.png" alt="Post Image">
+                    <div class="post-content">
+                        <a href="{{ url_for('blog1') }}">
+                            <h2 class="post-title">Failure is not an option</h2>
+                            <h3 class="post-subtitle">
+                                Many say exploration is part of our destiny, but
+                                it’s actually our duty to future generations.
+                            </h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">WineBlog</a>
+                            on July 8, 2023
+                        </p>
+                    </div>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Pager-->
+                <div class="d-flex justify-content-end mb-4">
+                    <a class="btn btn-primary text-uppercase" href="#!"
+                        >Older Posts →</a
+                    >
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

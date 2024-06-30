@@ -1,5 +1,141 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
-<!-- Page Header-->
+{% extends 'base.html' %} {% block head %}
+<style>
+    /* Page header styling */
+    .masthead {
+        position: relative;
+        height: 50vh;
+        min-height: 300px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        text-align: center;
+        padding: 200px 0;
+        animation: fadeIn 2s ease-in-out;
+    }
+    .masthead .page-heading {
+        animation: slideDown 1.5s ease-out;
+    }
+    .masthead h1 {
+        font-family: "Lora", serif;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    .masthead .subheading {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #d1c4e9;
+    }
+    /* Form styling */
+    .form-floating {
+        margin-bottom: 1rem;
+    }
+    .form-control {
+        border-radius: 0;
+        border: 2px solid #5b2c6f;
+    }
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #d1c4e9;
+    }
+    .btn-primary {
+        background-color: #5b2c6f;
+        border-color: #5b2c6f;
+    }
+    .btn-primary:hover {
+        background-color: #7d3c98;
+        border-color: #7d3c98;
+    }
+    .btn-primary:disabled {
+        background-color: #d1c4e9;
+        border-color: #d1c4e9;
+    }
+    .btn-primary:disabled:hover {
+        background-color: #d1c4e9;
+        border-color: #d1c4e9;
+    }
+    /* Center the button */
+    .center-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes slideDown {
+        from {
+            transform: translateY(-50%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    .bounce {
+        animation: pulse 1.5s infinite;
+    }
+    /* Modal styling */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        animation: fadeIn 0.5s;
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        max-width: 600px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .modal-content:hover {
+        transform: scale(1.05);
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+{% endblock %} {% block body %}
+<!-- Page Header -->
 <header
     class="masthead"
     style="background-image: url('static/img/contact-bg.jpg')"
@@ -8,142 +144,146 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1>Contact Me</h1>
-                    <span class="subheading"
-                        >Have questions? I have answers.</span
-                    >
+                    <h1>Contact Us</h1>
+                    <span class="subheading">Have questions? Let us help!</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
-<!-- Main Content-->
+
+<!-- Main Content -->
 <main class="mb-4">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p>
+                <p class="fadeIn">
                     Want to get in touch? Fill out the form below to send me a
                     message and I will get back to you as soon as possible!
                 </p>
-                <div class="my-5">
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                        <div class="form-floating">
-                            <input
-                                class="form-control"
-                                id="name"
-                                type="text"
-                                placeholder="Enter your name..."
-                                data-sb-validations="required"
-                            />
-                            <label for="name">Name</label>
-                            <div
-                                class="invalid-feedback"
-                                data-sb-feedback="name:required"
-                            >
-                                A name is required.
-                            </div>
-                        </div>
-                        <div class="form-floating">
-                            <input
-                                class="form-control"
-                                id="email"
-                                type="email"
-                                placeholder="Enter your email..."
-                                data-sb-validations="required,email"
-                            />
-                            <label for="email">Email address</label>
-                            <div
-                                class="invalid-feedback"
-                                data-sb-feedback="email:required"
-                            >
-                                An email is required.
-                            </div>
-                            <div
-                                class="invalid-feedback"
-                                data-sb-feedback="email:email"
-                            >
-                                Email is not valid.
-                            </div>
-                        </div>
-                        <div class="form-floating">
-                            <input
-                                class="form-control"
-                                id="phone"
-                                type="tel"
-                                placeholder="Enter your phone number..."
-                                data-sb-validations="required"
-                            />
-                            <label for="phone">Phone Number</label>
-                            <div
-                                class="invalid-feedback"
-                                data-sb-feedback="phone:required"
-                            >
-                                A phone number is required.
-                            </div>
-                        </div>
-                        <div class="form-floating">
-                            <textarea
-                                class="form-control"
-                                id="message"
-                                placeholder="Enter your message here..."
-                                style="height: 12rem"
-                                data-sb-validations="required"
-                            ></textarea>
-                            <label for="message">Message</label>
-                            <div
-                                class="invalid-feedback"
-                                data-sb-feedback="message:required"
-                            >
-                                A message is required.
-                            </div>
-                        </div>
-                        <br />
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">
-                                    Form submission successful!
-                                </div>
-                                To activate this form, sign up at
-                                <br />
-                                <a
-                                    href="https://startbootstrap.com/solution/contact-forms"
-                                    >https://startbootstrap.com/solution/contact-forms</a
-                                >
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">
-                                Error sending message!
-                            </div>
-                        </div>
-                        <!-- Submit Button-->
-                        <button
-                            class="btn btn-primary text-uppercase disabled"
-                            id="submitButton"
-                            type="submit"
-                        >
-                            Send
-                        </button>
-                    </form>
+                <div class="center-button">
+                    <button id="myBtn" class="btn btn-primary">
+                        Open Contact Form
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </main>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="my-5">
+            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        id="name"
+                        type="text"
+                        placeholder="Enter your name..."
+                        data-sb-validations="required"
+                    />
+                    <label for="name">Name</label>
+                    <div
+                        class="invalid-feedback"
+                        data-sb-feedback="name:required"
+                    >
+                        A name is required.
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email..."
+                        data-sb-validations="required,email"
+                    />
+                    <label for="email">Email address</label>
+                    <div
+                        class="invalid-feedback"
+                        data-sb-feedback="email:required"
+                    >
+                        An email is required.
+                    </div>
+                    <div
+                        class="invalid-feedback"
+                        data-sb-feedback="email:email"
+                    >
+                        Email is not valid.
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        id="phone"
+                        type="tel"
+                        placeholder="Enter your phone number..."
+                        data-sb-validations="required"
+                    />
+                    <label for="phone">Phone Number</label>
+                    <div
+                        class="invalid-feedback"
+                        data-sb-feedback="phone:required"
+                    >
+                        A phone number is required.
+                    </div>
+                </div>
+                <br />
+                <!-- Submit success message-->
+                <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center mb-3">
+                        <div class="fw-bolder">Form submission successful!</div>
+                        <!-- <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a> -->
+                    </div>
+                </div>
+                <!-- Submit error message-->
+                <div class="d-none" id="submitErrorMessage">
+                    <div class="text-center text-danger mb-3">
+                        Error sending message!
+                    </div>
+                </div>
+                <!-- Submit Button-->
+                <button
+                    class="btn btn-primary text-uppercase disabled"
+                    id="submitButton"
+                    type="submit"
+                >
+                    Send
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Script -->
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
 {% endblock %}
