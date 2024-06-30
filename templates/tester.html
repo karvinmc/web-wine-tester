@@ -4,6 +4,94 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
+    /* Page header styling */
+    .masthead {
+        position: relative;
+        background-color: #343a40;
+        color: white;
+        background-size: cover;
+        background-position: center;
+        padding: 8rem 0;
+    }
+    .masthead .page-heading {
+        animation: slideDown 1.5s ease-out;
+        text-align: center; /* Center the text */
+    }
+    .masthead h1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    .masthead .subheading {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #d1c4e9;
+    }
+    /* Content section styling */
+    .content-section {
+        padding: 4rem 0;
+    }
+    .content-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        animation: slideDown 1.5s ease-out;
+    }
+    .content-section p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #666;
+        animation: fadeIn 1.5s ease-out;
+    }
+    .feature-box {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        animation: fadeIn 1.5s ease-out;
+    }
+    .feature-box h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #343a40;
+    }
+    .feature-box p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes slideDown {
+        from {
+            transform: translateY(-50%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    .bounce {
+        animation: pulse 1.5s infinite;
+    }
     .btn-primary {
         background-color: #5b2c6f;
         border-color: #5b2c6f;
@@ -29,7 +117,7 @@
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="page-heading">
+                <div class="page-heading text-center">
                     <h1>Wine Tester</h1>
                     <span class="subheading">Find out the quality of your wine with the help of advanced machine learning analysis</span>
                 </div>

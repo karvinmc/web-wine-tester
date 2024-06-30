@@ -2,6 +2,7 @@
 
 {% block head %}
 <style>
+    /* Page header styling */
     .masthead {
         position: relative;
         background-color: #343a40;
@@ -10,17 +11,19 @@
         background-position: center;
         padding: 8rem 0;
     }
+    .masthead .page-heading {
+        animation: slideDown 1.5s ease-out;
+    }
     .masthead h1 {
         font-size: 3rem;
         font-weight: 700;
-        animation: fadeInUp 1s ease-out;
     }
     .masthead .subheading {
         font-size: 1.5rem;
         font-weight: 300;
-        animation: fadeInUp 1s ease-out;
-        animation-delay: 0.3s;
+        color: #d1c4e9;
     }
+    /* Content section styling */
     .content-section {
         padding: 4rem 0;
     }
@@ -28,14 +31,13 @@
         font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 1.5rem;
-        animation: fadeInUp 1s ease-out;
+        animation: slideDown 1.5s ease-out;
     }
     .content-section p {
         font-size: 1.2rem;
         line-height: 1.8;
         color: #666;
-        animation: fadeInUp 1s ease-out;
-        animation-delay: 0.3s;
+        animation: fadeIn 1.5s ease-out;
     }
     .feature-box {
         background-color: #f8f9fa;
@@ -43,7 +45,7 @@
         border-radius: 10px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
-        animation: fadeInUp 1s ease-out;
+        animation: fadeIn 1.5s ease-out;
     }
     .feature-box h3 {
         font-size: 1.8rem;
@@ -56,21 +58,43 @@
         line-height: 1.7;
     }
 
-    @keyframes fadeInUp {
+    @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: translateY(20px);
         }
         to {
             opacity: 1;
-            transform: translateY(0);
         }
+    }
+    @keyframes slideDown {
+        from {
+            transform: translateY(-50%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    .bounce {
+        animation: pulse 1.5s infinite;
     }
 </style>
 {% endblock %}
 
 {% block body %}
-<!-- Page Header-->
+<!-- Page Header -->
 <header class="masthead" style="background-image: url('static/img/home wine.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -83,7 +107,7 @@
         </div>
     </div>
 </header>
-<!-- Main Content-->
+<!-- Main Content -->
 <main class="content-section">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -111,22 +135,4 @@
         </div>
     </div>
 </main>
-
-<script>
-    // Adding scroll animation
-    document.addEventListener('DOMContentLoaded', () => {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        });
-
-        document.querySelectorAll('.animated').forEach(item => {
-            observer.observe(item);
-        });
-    });
-</script>
-
 {% endblock %}
